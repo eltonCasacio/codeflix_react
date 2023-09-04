@@ -21,7 +21,7 @@ const category: CategoryInterface = {
     updated_at: "2025-03-25T12:00:00",
 }
 
-const categories:CategoryInterface[] = [
+const categories: CategoryInterface[] = [
     category,
     { ...category, id: '2', name: 'Peach', is_active: true },
     { ...category, id: '3', name: 'Apple', is_active: true },
@@ -37,13 +37,18 @@ export const initialState = categories
 
 const categoriesSlice = createSlice({
     initialState,
-    name:'categories',
+    name: 'categories',
     reducers: {
-        createCategory(state, action){},
-        listCategory(state, action){},
-        editCategory(state, action){},
+        createCategory(state, action) { },
+        listCategory(state, action) { },
+        editCategory(state, action) { },
     }
 })
 
-export const selectCategories = (state:RootState) => state.categories
+export const selectCategories = (state: RootState) => {return state.categories}
+
+export const selectCategoryByID = (state: RootState, id: string) => {
+    return state.categories.find(category => category.id === id)
+}
+
 export default categoriesSlice.reducer
