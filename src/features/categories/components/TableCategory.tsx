@@ -4,6 +4,7 @@ import { useAppSelector } from '../../../app/hooks';
 import { IconButton, Typography } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
+import { selectCategories } from '../categorySlice';
 
 const columns: GridColDef[] = [
   { field: 'name', headerName: 'Name', flex: 1, renderCell: renderNameCell },
@@ -65,7 +66,7 @@ export const TableCategory = () => {
 
   const pageSize = [2, 5, 10, 15, 25, 100]
 
-  const categories = useAppSelector(state => state.categories)
+  const categories = useAppSelector(state => selectCategories(state))
 
   const rows: GridRowsProp = categories.map(category => ({
     id: category.id,
